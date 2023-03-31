@@ -56,10 +56,3 @@ if __name__ == '__main__':
 
     # save the updated collection
     save_collection(collection)
-
-     # commit the updated file to the repository
-    subprocess.check_call(['git', 'config', '--global', 'user.email', 'you@example.com'])
-    subprocess.check_call(['git', 'config', '--global', 'user.name', 'Your Name'])
-    subprocess.check_call(['git', 'add', 'shoe_collection.json'])
-    subprocess.check_call(['git', 'commit', '-m', 'Update shoe collection'])
-    subprocess.check_call(['git', 'push'])
