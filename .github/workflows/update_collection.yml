@@ -1,0 +1,28 @@
+name: Update Shoe Collection
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  update_collection:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Update collection
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        INPUT_ISSUE_NUMBER: ${{ github.event.issue.number }}
+      run: python app.py
