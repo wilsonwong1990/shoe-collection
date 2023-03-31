@@ -27,7 +27,7 @@
 
     <script>
         // load the shoe collection from the JSON file
-        $.getJSON("shoe_collection.json", function(data) {
+        $.getJSON("https://blog.wwong.me/shoe-collection/shoe_collection.json", function(data) {
             // loop through the shoes and add them to the table
             $.each(data, function(i, shoe) {
                 $('#shoeTableBody').append(
