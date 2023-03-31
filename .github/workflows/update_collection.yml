@@ -26,3 +26,10 @@ jobs:
         GITHUB_REPOSITORY: ${{ github.repository }}
         INPUT_ISSUE_NUMBER: ${{ github.event.issue.number }}
       run: python app.py
+    - name: commit changes back to repository
+      run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add shoe_collection.json
+          git commit -m "Update shoe collection"
+          git push -u origin main
