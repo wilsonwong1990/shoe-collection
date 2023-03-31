@@ -55,3 +55,7 @@ if __name__ == '__main__':
 
     # save the updated collection
     save_collection(collection)
+
+    # commit the updated file to the repository
+    contents = repo.get_contents("shoe_collection.json")
+    repo.update_file(contents.path, "Update shoe collection", json.dumps(collection, indent=4), contents.sha)
