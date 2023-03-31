@@ -1,6 +1,7 @@
 import json
 import os
 from github import Github
+import subprocess
 
 # define a function to add a shoe to the collection
 def add_shoe(collection, name, brand, size):
@@ -56,6 +57,9 @@ if __name__ == '__main__':
     # save the updated collection
     save_collection(collection)
 
-    # commit the updated file to the repository
-    contents = repo.get_contents("shoe_collection.json")
-    repo.update_file(contents.path, "Update shoe collection", json.dumps(collection, indent=4), contents.sha)
+     # commit the updated file to the repository
+    subprocess.check_call(['git', 'config', '--global', 'user.email', 'you@example.com'])
+    subprocess.check_call(['git', 'config', '--global', 'user.name', 'Your Name'])
+    subprocess.check_call(['git', 'add', 'shoe_collection.json'])
+    subprocess.check_call(['git', 'commit', '-m', 'Update shoe collection'])
+    subprocess.check_call(['git', 'push'])
